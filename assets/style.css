@@ -150,3 +150,9 @@ img {
 .trailCards {
     height: 17rem;
 }
+
+#noTrail {
+    color: white;
+    font-family: mallanna;
+    font-size: 30px;
+}

@@ -25,12 +25,13 @@ function callHiking(latGeo, longGeo) {
     console.log('Trails')
     console.log(response)
 
+    $("#noTrail").empty();
     $("#results").empty();
     $("#weather").empty();
     $("#searchTextField").val("");
    
     if(response.trails.length === 0) {
-        console.log("No Trails Here. Search in a different location.")
+        $("#noTrail").append("No Trails Here. Search in a different location.")
     }else {
         var latitude = response.trails[0].latitude;
         var longitude = response.trails[0].longitude;
