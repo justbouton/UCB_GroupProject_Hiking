@@ -9,4 +9,4 @@ FUTURE IMPROVEMENTS:
 Add a difficulty scale and star rating images.
 Imperial and metric
 No results return error
-Scroll through pictures
+Scrollable through pictures
