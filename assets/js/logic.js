@@ -1,7 +1,8 @@
-var config = "assets/js/config.js";
+var apiGoogleKey = apiConfig.googleKey;
+var apiHikeKey = apiConfig.hikeKey;
 
-var googleApi = config.apiGoogleKey;
-var hikeApi = config.apiHikeKey;
+console.log(apiGoogleKey);
+console.log(apiHikeKey);
 
 function callGeo(place) {
     $.ajax({
