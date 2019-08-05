@@ -1,7 +1,11 @@
+// These keys are intended for this application only.
+const googleKey = "AIzaSyAnchOSJwMRxGAMOEkdHWXfnEyVrLXvXYU";
+const hikeKey = "200405510-8962507534a69ec877075d4b321c0109"
+
 function callGeo(place) {
     $.ajax({
 
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + place + '&key=AIzaSyABT7TsibcsgW1I5asZKM23s_Jdgc91-Jk',
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + place + '&key=' + googleKey,
         method: "GET",
         type: "json"
     }).then(function (response) {
@@ -15,7 +19,7 @@ function callGeo(place) {
 
 function callHiking(latGeo, longGeo) {
     $.ajax({
-    url: 'https://www.hikingproject.com/data/get-trails?lat=' + latGeo + '&' + 'lon=' + longGeo + '&maxDistance=10&key=200405510-8962507534a69ec877075d4b321c0109',
+    url: 'https://www.hikingproject.com/data/get-trails?lat=' + latGeo + '&' + 'lon=' + longGeo + '&maxDistance=10&key=' + hikeKey,
     method: "GET",
     type: "json"
 }).then(function (response) {
