@@ -1,12 +1,11 @@
 README:
-HikeApp is a global app to give the user a list of hiking trails with local weather for the next seven days, current trail conditions, general summary, rating and difficulty.
+HikerApp is a international list of hiking trails with current trail conditions, general summary, rating and difficulty as well as local weather for the next seven days.
 
 HOW TO USE: 
-Type in a location, select from autocomplete, press enter or click go.
-The user can search other locations by typing in the search field and clicking go!
+Type in a location town/city, select from autocomplete, press enter or click go.
+The user can search other locations by typing in the search field and clicking go.
 
 FUTURE IMPROVEMENTS:
-Add a difficulty scale and star rating images.
+Add a difficulty scale covert number to star rating.
 Imperial and metric
-No results return error
-Scrollable through pictures
+Scrollable trail pictures, if available
