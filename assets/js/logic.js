@@ -1,31 +1,34 @@
-//API keys
-var apiGoogleKey = "AIzaSyAnchOSJwMRxGAMOEkdHWXfnEyVrLXvXYU";
-var apiHikeKey = "200405510-8962507534a69ec877075d4b321c0109";
+// These keys are intended for this application and URL only.
+const googleKey = "AIzaSyCYaklzW_pKHd0qqzBOAJAax0m6k7RykhQ";
+const hikeKey = "200405510-8962507534a69ec877075d4b321c0109"
 
-// Google GeoLocation
+
 function callGeo(place) {
     $.ajax({
 
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + place + '&key=' + apiGoogleKey,
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + place + '&key=' + googleKey,
         method: "GET",
         type: "json"
     }).then(function (response) {
-        // console.log(response)
+        console.log(response)
         var latGeo = response.results[0].geometry.location.lat
         var longGeo = response.results[0].geometry.location.lng
         callHiking(latGeo, longGeo)
     });
 }
 
-// Hiking trails
+console.log(googleKey);
+console.log(hikeKey);
+
+
 function callHiking(latGeo, longGeo) {
     $.ajax({
-    url: 'https://www.hikingproject.com/data/get-trails?lat=' + latGeo + '&' + 'lon=' + longGeo + '&maxDistance=10&key=' + apiHikeKey,
+    url: 'https://www.hikingproject.com/data/get-trails?lat=' + latGeo + '&' + 'lon=' + longGeo + '&maxDistance=10&key=' + hikeKey,
     method: "GET",
     type: "json"
 }).then(function (response) {
-    // console.log('Trails')
-    // console.log(response)
+    console.log('Trails')
+    console.log(response)
 
     $("#noTrail").empty();
     $("#results").empty();
@@ -34,14 +37,11 @@ function callHiking(latGeo, longGeo) {
    
     if(response.trails.length === 0) {
         $("#noTrail").append("No Trails Here. Search in a different location.")
-    } else {
+    }else {
         var latitude = response.trails[0].latitude;
-        var longitude = response.trails[0].longitude;            
-        
+        var longitude = response.trails[0].longitude;
         callWeather(latitude, longitude)
         for(var i=0; i < response.trails.length; i++) {
-
-        var stars = response.trails[i].stars * 20;
             
             if((i % 3) === 0) {
             var row = $('<div class="row">');
@@ -61,25 +61,7 @@ function callHiking(latGeo, longGeo) {
                     <li class="list-group-item">Status: ${response.trails[i].conditionStatus}</li>
                     <li class="list-group-item">Summary: ${response.trails[i].summary}</li>
                     <li class="list-group-item">Difficulty: ${response.trails[i].difficulty}</li>
-                    <li class="list-group-item">
-                        <div class="star-rating" title="70%">
-                            <div class="back-stars">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                
-                                <div class="front-stars" style="width: ${stars}%">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>        
-                    </li>
+                    <li class="list-group-item">Stars: ${response.trails[i].stars}</li>
                 </ul>
             </div>
         </div>
@@ -101,24 +83,7 @@ function callHiking(latGeo, longGeo) {
                     <li class="list-group-item">Status: ${response.trails[i].conditionStatus}</li>
                     <li class="list-group-item">Summary: ${response.trails[i].summary}</li>
                     <li class="list-group-item">Difficulty: ${response.trails[i].difficulty}</li>
-                    <li class="list-group-item">
-                    <div class="star-rating" title="70%">
-                        <div class="back-stars">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            
-                            <div class="front-stars" style="width: ${stars}%">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>  
+                    <li class="list-group-item">Stars: ${response.trails[i].stars}</li>
                 </ul>
             </div>
         </div>
@@ -134,13 +99,12 @@ function callHiking(latGeo, longGeo) {
 });
 }
 
-// Image load
 function isImageNull(img) {
         // console.log("this is img " + img);
         var altImage = 'https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
         if (img === "") {return altImage} // Checks if urltoImg is null otherwise error will occurr with isHttp substr value below
         var isHttp = img.substr(0, 4) //Sometimes this is null which affects below
-        // console.log(isHttp);
+        console.log(isHttp);
         
         if (img === "") {
             return altImage
@@ -151,7 +115,6 @@ function isImageNull(img) {
         }
     }
 
-// Weather
 var days = 7;
 
 function callWeather(latitude, longitude){
@@ -192,7 +155,8 @@ function callWeather(latitude, longitude){
     });
 }
 
-// Date
+// callGeo()
+
 function GetDates(startDate, daysToAdd) {
     var aryDates = [];
 
@@ -240,7 +204,7 @@ function DayAsString(dayIndex) {
 var startDate = new Date();
 var aryDates = GetDates(startDate, 7);
 var aryLen = aryDates.length
-// console.log(aryDates);
+console.log(aryDates);
 
 
 var input;
@@ -270,7 +234,7 @@ function consoleMe() {
 
     var inputer = inputer.join().concat().replace(/,/g, "")
 
-    // console.log(inputer)
+    console.log(inputer)
     callGeo(inputer)
     $('#weather').removeClass('invisible');
 }
