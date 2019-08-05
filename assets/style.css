@@ -108,6 +108,7 @@ img.card-img-top {
 
 .list-group-item {
     font-family: mclaren;
+    overflow: hidden;
 }
 
 .col-md-9 {
@@ -155,4 +156,29 @@ img {
     color: white;
     font-family: mallanna;
     font-size: 30px;
+}
+
+/*---------- star rating ----------*/
+%flex-display {
+    display: flex;
+}
+.star-rating {
+    @extend %flex-display;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.back-stars {
+    @extend %flex-display;
+    color: #bb5252;
+    position: relative;
+    text-shadow: 4px 4px 10px #843a3a;
+}
+.front-stars {
+    @extend %flex-display;
+    color: #FFBC0B;
+    overflow: hidden;
+    position: absolute;
+    text-shadow: 2px 2px 5px #d29b09;
+    top: 0;
 }
