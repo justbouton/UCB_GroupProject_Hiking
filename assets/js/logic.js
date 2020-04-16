@@ -9,10 +9,15 @@ function callGeo(place) {
         method: "GET",
         type: "json"
     }).then(function (response) {
-        console.log(response)
-        var latGeo = response.results[0].geometry.location.lat
-        var longGeo = response.results[0].geometry.location.lng
-        callHiking(latGeo, longGeo)
+        // if test for lat/long else alert API error
+        if (reponse) {
+            console.log(response)
+            var latGeo = response.results[0].geometry.location.lat
+            var longGeo = response.results[0].geometry.location.lng
+            callHiking(latGeo, longGeo)
+        } else {
+            alert("API error - No Geolocation found")
+        }
     });
 }
 
