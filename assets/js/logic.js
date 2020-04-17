@@ -2,7 +2,7 @@
 const googleKey = "AIzaSyCYaklzW_pKHd0qqzBOAJAax0m6k7RykhQ";
 const hikeKey = "200405510-8962507534a69ec877075d4b321c0109"
 
-alert("logic.js started")
+console.log("logic.js started")
 
 function callGeo(place) {
     $.ajax({
@@ -14,9 +14,9 @@ function callGeo(place) {
         // if test for lat/long else alert API error
         if (response) {
             alert(response)
-            var latGeo = response.results[0].geometry.location.lat
-            var longGeo = response.results[0].geometry.location.lng
-            callHiking(latGeo, longGeo)
+            // var latGeo = response.results[0].geometry.location.lat
+            // var longGeo = response.results[0].geometry.location.lng
+            // callHiking(latGeo, longGeo)
         } else {
             alert("API error - No Geolocation found")
         }
