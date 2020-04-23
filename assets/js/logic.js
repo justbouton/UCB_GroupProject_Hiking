@@ -13,9 +13,9 @@ function callGeo(place) {
         // if test for lat/long else alert API error
         if (response) {
             console.log(response) // TESTING RESPONSE AS lat/long are not getting a reponse
-            // var latGeo = response.results[0].geometry.location.lat
-            // var longGeo = response.results[0].geometry.location.lng
-            // callHiking(latGeo, longGeo)
+            var latGeo = response.results[0].geometry.location.lat
+            var longGeo = response.results[0].geometry.location.lng
+            callHiking(latGeo, longGeo)
         } else {
             console.log("API error - No Geolocation found")
         }
